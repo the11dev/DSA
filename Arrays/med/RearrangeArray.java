@@ -6,12 +6,13 @@ public class RearrangeArray {
         int nums[]={3,1,-2,-5,2,-4};
         int nums2[]={-1,1};
         int ans1[]= rearrangeArray(nums);
-        int[] ans2=rearrangeArray(nums2);
+        int[] ans2=rearrangeArray2(nums2);
 
         System.out.println(Arrays.toString(ans1));
         System.out.println(Arrays.toString(ans2));
 
     }
+    // BRUTE FORCE
     static int[] rearrangeArray(int[] nums){
         int n= nums.length;
         int pos[]=new int[n/2];
@@ -36,5 +37,22 @@ public class RearrangeArray {
             nums[k++]=neg[m];
         }
         return nums;
+    }
+     
+    // OPTIMAL
+    static int[] rearrangeArray2(int[] nums){
+        int res[]=new int[nums.length];
+        int i=0,j=1;
+        for(int num:nums){
+            if(num>0){
+                res[i]=num;
+                i+=2;
+            }
+            if(num<0){
+                res[j]=num;
+                j+=2;
+            }
+        }
+        return res;
     }
 }
